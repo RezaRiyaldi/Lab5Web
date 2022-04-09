@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Mengenal JavaScript</title>
+    <style>
+        code {
+            color: orangered;
+        }
+    </style>
+</head>
+
+<body onload="pesan()">
+    <h1>Pengenalan JavaScript</h1>
+    <h3>Contoh <code>document.write</code> dan <code>console.log</code></h3>
+
+    <button onclick="aritmatika(9, 4)">Klik function aritmatika 9 dan 4</button>
+
+    <br>
+    <br>
+
+    <button onclick="bilangan()">Switch</button>
+
+    <script>
+
+        function bilangan() {
+            var bilangan1 = prompt("Input nilai (1 - 5)");
+            switch (bilangan1) {
+                case '1':
+                    document.write("Bilangan 1");
+                    break;
+
+                case '2':
+                    document.write("Bilangan 2");
+                    break;
+
+                case '3':
+                    document.write("Bilangan 3");
+                    break;
+
+                case '4':
+                    document.write("Bilangan 4");
+                    break;
+
+                case '5':
+                    document.write("Bilangan 5");
+                    break;
+
+                default:
+                    document.write("Bilangan lainnya");
+                    break;
+            }
+        }
+
+
+        // var nilai = prompt("Masukan nilai (0 - 100)");
+        // var hasil= "";
+
+        // if (nilai < 0 || nilai > 100) {
+        //     alert("Nilai yang anda masukkan tidak valid!")
+        //     location.reload();
+        // } else if (nilai >= 60) {
+        //     hasil = "Lulus";
+        // } else {
+        //     hasil = "Tidak Lulus";
+        // }
+
+        // document.write("Nilai anda : " + nilai + "<br>");
+        // document.write("Hasil : " + hasil);
+
+
+        // function aritmatika(bilangan1, bilangan2) {
+        //     document.write("<b>Penjumlahan : </b><br>" + bilangan1 + " + " + bilangan2 + " = " + (bilangan1 + bilangan2) + "<br><br>")
+
+        //     document.write("<b>Pengurangan : </b><br>" + bilangan1 + " - " + bilangan2 + " = " + (bilangan1 - bilangan2) + "<br><br>")
+
+        //     document.write("<b>Perkalian : </b><br>" + bilangan1 + " * " + bilangan2 + " = " + (bilangan1 * bilangan2) + "<br><br>")
+
+        //     document.write("<b>Pembagian : </b><br>" + bilangan1 + " / " + bilangan2 + " = " + (bilangan1 / bilangan2) + "<br><br>")
+
+        //     document.write("<b>Modulo : </b><br>" + bilangan1 + " % " + bilangan2 + " = " + (bilangan1 % bilangan2) + "<br><br>")
+        // }
+
+        // function pesan() {
+        //     alert("Memanggil javascript lewat body onload");
+        // }
+
+        // var nama = prompt("Siapa nama anda?");
+        // document.write("Hai " + nama);
+
+        // document.write("Hello World");
+        // console.log("Hello World");
+
+        // window.alert("Ini merupakan pesan untuk anda");
+
+        // document.write("Selamat mencoba javascript <br>");
+        // document.write("Semoga Sukses");
+    </script>
+</body>
+
+</html>
