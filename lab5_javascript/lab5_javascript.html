@@ -14,43 +14,87 @@
     <h1>Pengenalan JavaScript</h1>
     <h3>Contoh <code>document.write</code> dan <code>console.log</code></h3>
 
-    <button onclick="aritmatika(9, 4)">Klik function aritmatika 9 dan 4</button>
+    <br>
+    <!-- <button onclick="aritmatika(9, 4)">Klik function aritmatika 9 dan 4</button>
 
     <br>
     <br>
 
-    <button onclick="bilangan()">Switch</button>
+    <button onclick="bilangan()">Switch</button>  <form>
+        <label for="bilangan">Bilangan</label>
+        <input type="number" id="bilangan" name="bilangan">
+        <button onclick="kirim()" type="button">Kirim</button>
+    </form>
 
+    <p id="output"></p> -->
+
+    <form>
+        <button type="button" onclick="ubahWarnaBg('GREEN')">Background Hijau</button>
+        <button type="button" onclick="ubahWarnaBg('BLUE')">Background Biru</button>
+        <button type="button" onclick="ubahWarnaTeks('YELLOW')">Teks Kuning</button>
+        <button type="button" onclick="ubahWarnaTeks('RED')">Teks Merah</button>
+        <button type="button" onclick="ubahWarnaDefault()">Default</button>
+    </form>
     <script>
-
-        function bilangan() {
-            var bilangan1 = prompt("Input nilai (1 - 5)");
-            switch (bilangan1) {
-                case '1':
-                    document.write("Bilangan 1");
-                    break;
-
-                case '2':
-                    document.write("Bilangan 2");
-                    break;
-
-                case '3':
-                    document.write("Bilangan 3");
-                    break;
-
-                case '4':
-                    document.write("Bilangan 4");
-                    break;
-
-                case '5':
-                    document.write("Bilangan 5");
-                    break;
-
-                default:
-                    document.write("Bilangan lainnya");
-                    break;
-            }
+        function ubahWarnaBg(warna) {
+            document.bgColor = warna;
         }
+
+        function ubahWarnaTeks(warna) {
+            document.fgColor = warna;
+        }
+
+        function ubahWarnaDefault() {
+            document.bgColor = 'WHITE';
+            document.fgColor = 'BLACK';
+        }
+
+        document.write("Dimodifikasi terakhir pada " + document.lastModified);
+
+        // function kirim() {
+        //     var input = document.getElementById("bilangan")
+        //     var bilangan = input.value;
+        //     var hasil = ""
+
+        //     if (bilangan % 2 == 0) {
+        //         hasil = "Bilangan Genap";
+        //     } else {
+        //         hasil = "Bilangan Ganjil";
+        //     }
+
+        //     document.getElementById("output").innerHTML = "Bilangan yang dimasukkan: " + bilangan + ", merupakan <b>" + hasil + "</b>";
+
+        //     input.value = null;
+        // }
+        
+        // function bilangan() {
+        //     var bilangan1 = prompt("Input nilai (1 - 5)");
+        //     switch (bilangan1) {
+        //         case '1':
+        //             document.write("Bilangan 1");
+        //             break;
+
+        //         case '2':
+        //             document.write("Bilangan 2");
+        //             break;
+
+        //         case '3':
+        //             document.write("Bilangan 3");
+        //             break;
+
+        //         case '4':
+        //             document.write("Bilangan 4");
+        //             break;
+
+        //         case '5':
+        //             document.write("Bilangan 5");
+        //             break;
+
+        //         default:
+        //             document.write("Bilangan lainnya");
+        //             break;
+        //     }
+        // }
 
 
         // var nilai = prompt("Masukan nilai (0 - 100)");

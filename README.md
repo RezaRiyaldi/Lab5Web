@@ -209,7 +209,7 @@ function bilangan() {
 
 ![switch off](img/ss_switch1.png)
 
-4. Ketika diklikakan meminputa inputan.
+4. Ketika diklik akan meminta inputan.
 
 ![switch input](img/ss_switch_input.png)
 
@@ -222,4 +222,378 @@ function bilangan() {
 ![switch output default](img/ss_switch_ouput_default.png)
 
 ## Langkah 9 `Form Input`
+1. Buat form dengan kode seperti berikut.
 
+```html
+<form>
+    <label for="bilangan">Bilangan</label>
+    <input type="number" id="bilangan" name="bilangan">
+    <button onclick="kirim()" type="button">Kirim</button>
+</form>
+
+<p id="output"></p>
+```
+
+2. Tambahkan function `kirim()` untuk memproses hasil.
+
+```javascript
+function kirim() {
+    var input = document.getElementById("bilangan")
+    var bilangan = input.value;
+    var hasil = ""
+
+    if (bilangan % 2 == 0) {
+        hasil = "Bilangan Genap";
+    } else {
+        hasil = "Bilangan Ganjil";
+    }
+
+    document.getElementById("output").innerHTML = "Bilangan yang dimasukkan: " + bilangan + ", merupakan <b>" + hasil + "</b>";
+
+    input.value = null;
+}
+```
+
+3. Sebelum menginput akan seperti berikut.
+
+![form input](img/ss_form_input.png)
+
+4. Apabila yang dimasukkan bilangan ganjil.
+
+![form ganjil](img/ss_form_ganjil.png)
+
+5. Apabila yang dimasukkan bilangan genap.
+
+![form genap](img/ss_form_genap.png)
+
+## Langkah 10 `Form Button`
+1. Buat form dengan kode berikut.
+
+```html
+<form>
+    <button type="button" onclick="ubahWarnaBg('GREEN')">Background Hijau</button>
+
+    <button type="button" onclick="ubahWarnaBg('BLUE')">Background Biru</button>
+
+    <button type="button" onclick="ubahWarnaTeks('YELLOW')">Teks Kuning</button>
+
+    <button type="button" onclick="ubahWarnaTeks('RED')">Teks Merah</button>
+
+    <button type="button" onclick="ubahWarnaDefault()">Default</button>
+</form>
+```
+
+2. Buat beberapa function agar buttonnya aktif.
+
+```javascript
+function ubahWarnaBg(warna) {
+    document.bgColor = warna;
+}
+
+function ubahWarnaTeks(warna) {
+    document.fgColor = warna;
+}
+
+function ubahWarnaDefault() {
+    document.bgColor = 'WHITE';
+    document.fgColor = 'BLACK';
+}
+
+document.write("Dimodifikasi terakhir pada " + document.lastModified);
+```
+
+3. Hasil akan seperti berikut.
+
+![form button](img/ss_button1.png)
+![form button](img/ss_button2.png)
+
+## Langkah 11 `HTML DOM : Perhitungan otomatis`
+1. Buat struktur HTML.
+2. Buat Form seperti berikut.
+
+```html
+<h1>Daftar Menu Makanan</h1>
+<form>
+    <div class="form-group">
+        <label for="ayam">Ayam Goreng <span>Rp. 50.000</span></label>
+        <input type="checkbox" value="50000" id="ayam" onclick="hitung(this)">
+    </div>
+
+    <div class="form-group">
+        <label for="tempe">Tempe Goreng <span>Rp. 10.000</span></label>
+        <input type="checkbox" value="10000" id="tempe" onclick="hitung(this)">
+    </div>
+
+    <div class="form-group">
+        <label for="ikan">Ikan Gurame <span>Rp. 100.000</span></label>
+        <input type="checkbox" value="100000" id="ikan" onclick="hitung(this)">
+    </div>
+</form>
+```
+
+3. Tambahkan function untuk menghitung.
+
+```javascript
+function hitung(menu) {
+    var tot = document.getElementById('total');
+    var total = tot.value;
+    total = (total ? parseInt(total) : 0);
+    var harga = 0;
+
+    if (menu.checked) {
+        harga = menu.value;
+        total += parseInt(harga);
+    } else {
+        harga = menu.value;
+        if (total > 0) {
+            total -= parseInt(harga);
+        }
+    }
+
+    tot.value = total;
+}
+```
+
+4. Tambahkan sedikit css.
+
+```css
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(215, 215, 240);
+    padding: 5px;
+    margin: 10px 0;
+}
+
+label {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.form-group:hover {
+    background: rgb(170, 170, 194);
+}
+```
+
+5. Maka hasilnya akan seperti berikut.
+
+![daftar menu](img/ss_daftar_menu.png)
+
+## Pertanyaan dan Tugas
+1. Buat script untuk melakukan validasi form.
+
+## HTML
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Coy</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="card">
+                <h1>Register</h1>
+                <form>
+                    <div class="form-group">
+                        <label for="username" class="input">Username</label>
+                        <input type="text" id="username" placeholder="Masukan username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="input">Password</label>
+                        <input type="password" id="password" placeholder="Masukan Password (min: 6)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="repassword" class="input">RePassword</label>
+                        <input type="password" id="repassword" placeholder="Konfirmasi password">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="agree">
+                        <label for="agree">Saya menyetujui apapun kebijakan yang berlaku.</label>
+                    </div>
+
+                    <button id="button">Daftar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+```
+
+## CSS
+```css
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.card {
+    /* background-color: grey; */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 20px;
+    border: 1px rgb(207, 207, 207) solid;
+    border-radius: 7px;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+label.input, input[type="text"], input[type="password"] {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input {
+    padding: 5px;
+    border: 1px solid rgb(207, 207, 207);
+    border-radius: 3px;
+}
+
+button {
+    background-color: rgb(28, 103, 202);
+    border: none;
+    padding: 8px 20px;
+    width: 100%;
+    border-radius: 3px;
+    color: white;
+}
+
+button:hover {
+    background-color: rgb(13, 89, 189);
+    cursor: pointer;
+
+}
+
+```
+
+## Javascript
+```javascript
+var username = document.getElementById("username");
+var password = document.getElementById("password");
+var repassword = document.getElementById("repassword");
+var check = document.getElementById("agree");
+var button = document.getElementById("button");
+
+username.onfocus = function () {
+	if (username.value == "") {
+		username.style.backgroundColor = "#fc9d9d";
+	} else {
+		username.style.backgroundColor = "#98e79c";
+	}
+};
+
+username.onkeyup = function () {
+	username.style.backgroundColor = "#98e79c";
+};
+
+username.onblur = function () {
+	if (username.value != "") {
+		username.style.backgroundColor = "#98e79c";
+	} else {
+		username.style.backgroundColor = "#fc9d9d";
+	}
+};
+
+password.onfocus = function () {
+	if (password.value == "") {
+		password.style.backgroundColor = "#fc9d9d";
+	}
+};
+
+password.onkeyup = function () {
+	if (password.value.length >= 6) {
+		password.style.backgroundColor = "#98e79c";
+	} else {
+		password.style.backgroundColor = "#fc9d9d";
+	}
+};
+
+password.onblur = function () {
+	if (password.value != "" && password.value.length >= 6) {
+		password.style.backgroundColor = "#98e79c";
+	} else {
+		password.style.backgroundColor = "#fc9d9d";
+	}
+};
+
+repassword.onfocus = function () {
+	if (repassword.value == "") {
+		repassword.style.backgroundColor = "#fc9d9d";
+	}
+};
+
+repassword.onkeyup = function () {
+	if (repassword.value.length >= 6 && password.value == repassword.value) {
+		repassword.style.backgroundColor = "#98e79c";
+	} else {
+		repassword.style.backgroundColor = "#fc9d9d";
+	}
+};
+
+repassword.onblur = function () {
+	if (repassword.value != "" && repassword.value.length >= 6) {
+		repassword.style.backgroundColor = "#98e79c";
+	} else {
+		repassword.style.backgroundColor = "#fc9d9d";
+	}
+};
+
+button.onclick = function () {
+	if (
+		check.checked &&
+		username.value != "" &&
+		password.value != "" &&
+		password.value.length >= 6 &&
+		password.value === repassword.value
+	) {
+		alert("Berhasil mendaftar");
+	} else {
+        alert("Gagal mendaftar harap cek semua inputan form");
+	}
+}
+
+```
+
+## Running
+1. Tampilan awal
+
+![page](img/tugas0.png)
+
+2. Mengisi inputan dengan benar, dan tidak kosong
+
+![page](img/tugas1.png)
+
+3. Apabila salah satu belum terpenuhi
+
+![page](img/tugas2.png)
+
+4. Jika semua terpenuhi
+
+![page](img/tugas3.png)
